@@ -1,0 +1,38 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: black;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e50914;
+  text-decoration: none;
+}
+
+.nav-center a {
+  margin: 0 12px;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-center a:hover {
+  color: #e50914;
+}
+
+.nav-right button {
+  padding: 6px 14px;
+  border: none;
+  background: #e50914;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-right button:hover {
+  background: #b20710;
+}

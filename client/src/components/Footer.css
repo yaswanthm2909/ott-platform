@@ -1,0 +1,22 @@
+.footer {
+  margin-top: 40px;
+  padding: 20px;
+  text-align: center;
+  background: #000;
+  border-top: 1px solid #222;
+  color: #aaa;
+}
+
+.footer-links {
+  margin-top: 10px;
+}
+
+.footer-links a {
+  margin: 0 10px;
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
