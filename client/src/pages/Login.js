@@ -12,13 +12,17 @@ function Login() {
 
     try {
       const res = await api.post("/auth/login", {
-        email,
-        password,
+        email: email.trim(),
+        password: password.trim(),
       });
 
+      // save token
       localStorage.setItem("token", res.data.token);
+
+      // redirect to home
       navigate("/");
     } catch (error) {
+      console.error("Login error:", error);
       alert("Invalid email or password");
     }
   };
@@ -32,6 +36,7 @@ function Login() {
         placeholder="Email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        required
       />
 
       <br /><br />
@@ -41,6 +46,7 @@ function Login() {
         placeholder="Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
+        required
       />
 
       <br /><br />

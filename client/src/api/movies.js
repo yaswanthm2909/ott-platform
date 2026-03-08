@@ -12,11 +12,11 @@ export const getMovieById = async (id) => {
   return res.data;
 };
 
-// ================= WATCHLIST (BACKEND) =================
+// ================= WATCHLIST =================
 
 export const getWatchlist = async () => {
   const res = await api.get("/user/watchlist");
-  return res.data;
+  return res.data || [];
 };
 
 export const addToWatchlistApi = async (movieId) => {
@@ -29,26 +29,32 @@ export const removeFromWatchlistApi = async (movieId) => {
   return res.data;
 };
 
-// ================= PROGRESS (BACKEND) =================
+// ================= CONTINUE WATCHING =================
 
 export const getProgressList = async () => {
   const res = await api.get("/user/progress");
-  return res.data;
+  return res.data || [];
 };
 
 export const updateProgressApi = async (movieId, progress) => {
-  const res = await api.post("/user/progress", { movieId, progress });
+  const res = await api.post("/user/progress", {
+    movieId,
+    progress,
+  });
   return res.data;
 };
 
-// ================= RATINGS (BACKEND) =================
+// ================= RATINGS =================
 
 export const getRatings = async () => {
   const res = await api.get("/user/ratings");
-  return res.data;
+  return res.data || {};
 };
 
 export const setRatingApi = async (movieId, rating) => {
-  const res = await api.post("/user/ratings", { movieId, rating });
+  const res = await api.post("/user/ratings", {
+    movieId,
+    rating,
+  });
   return res.data;
 };
