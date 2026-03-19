@@ -21,7 +21,7 @@ const watchlistRoutes = require("./routes/watchlistRoutes"); // ✅ ADD THIS
 
 // USE ROUTES
 app.use("/api/auth", authRoutes);
-app.use("/api", profileRoutes);
+app.use("/api/profile", profileRoutes);
 app.use("/api/movies", movieRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/watchlist", watchlistRoutes); // ✅ ADD THIS
