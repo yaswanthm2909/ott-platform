@@ -16,13 +16,15 @@ app.use(express.urlencoded({ extended: true }));
 const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const movieRoutes = require("./routes/movieRoutes");
-const userRoutes = require("./routes/userRoutes"); // ✅ NEW
+const userRoutes = require("./routes/userRoutes");
+const watchlistRoutes = require("./routes/watchlistRoutes"); // ✅ ADD THIS
 
 // USE ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api", profileRoutes);
 app.use("/api/movies", movieRoutes);
-app.use("/api/user", userRoutes); // ✅ NEW
+app.use("/api/user", userRoutes);
+app.use("/api/watchlist", watchlistRoutes); // ✅ ADD THIS
 
 // ROOT
 app.get("/", (req, res) => {
@@ -41,4 +43,8 @@ mongoose
 // START SERVER
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+
+app.get("/test-route", (req, res) => {
+  res.send("TEST WORKING");
 });

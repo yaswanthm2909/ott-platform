@@ -1,33 +1,21 @@
 const express = require("express");
 const router = express.Router();
+
+const {
+  addToWatchlist,
+  removeFromWatchlist,
+  getWatchlist,
+} = require("../controllers/watchlistController");
+
 const { protect } = require("../middleware/authMiddleware");
 
-// Temporary in-memory watchlist (for testing)
-let watchlist = [];
+// GET watchlist
+router.get("/", protect, getWatchlist);
 
-// Add to watchlist (protected)
-router.post("/", protect, (req, res) => {
-  const { movieId } = req.body;
+// ADD to watchlist
+router.post("/", protect, addToWatchlist);
 
-  if (!movieId) {
-    return res.status(400).json({ message: "movieId is required" });
-  }
-
-  watchlist.push({
-    user: req.user._id,
-    movieId,
-  });
-
-  res.json({ message: "Added to watchlist", watchlist });
-});
-
-// Get watchlist (protected)
-router.get("/", protect, (req, res) => {
-  const userList = watchlist.filter(
-    (item) => String(item.user) === String(req.user._id)
-  );
-
-  res.json(userList);
-});
+// REMOVE from watchlist
+router.delete("/", protect, removeFromWatchlist);
 
 module.exports = router;

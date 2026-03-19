@@ -1,24 +1,21 @@
 const User = require("../models/User");
-const Movie = require("../models/Movie");
 
 // ADD TO WATCHLIST
 const addToWatchlist = async (req, res) => {
   try {
     const userId = req.user.id;
-    const movieId = req.params.movieId;
+    const { movieId } = req.body;
 
     const user = await User.findById(userId);
 
-    if (user.watchlist.includes(movieId)) {
-      return res.status(400).json({ message: "Movie already in watchlist" });
+    if (!user.watchlist.includes(movieId)) {
+      user.watchlist.push(movieId);
+      await user.save();
     }
 
-    user.watchlist.push(movieId);
-    await user.save();
-
-    res.status(200).json({ message: "Movie added to watchlist" });
+    res.status(200).json(user.watchlist);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Error adding to watchlist" });
   }
 };
 
@@ -26,15 +23,19 @@ const addToWatchlist = async (req, res) => {
 const removeFromWatchlist = async (req, res) => {
   try {
     const userId = req.user.id;
-    const movieId = req.params.movieId;
+    const { movieId } = req.body;
 
-    await User.findByIdAndUpdate(userId, {
-      $pull: { watchlist: movieId },
-    });
+    const user = await User.findById(userId);
 
-    res.status(200).json({ message: "Movie removed from watchlist" });
+    user.watchlist = user.watchlist.filter(
+      (id) => id.toString() !== movieId
+    );
+
+    await user.save();
+
+    res.status(200).json(user.watchlist);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Error removing from watchlist" });
   }
 };
 
@@ -47,7 +48,7 @@ const getWatchlist = async (req, res) => {
 
     res.status(200).json(user.watchlist);
   } catch (error) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Error fetching watchlist" });
   }
 };
 

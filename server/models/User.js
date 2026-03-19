@@ -39,6 +39,14 @@ const userSchema = new mongoose.Schema(
       },
     ],
 
+    // ✅ ADD THIS (you were missing it)
+    recentlyViewed: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Movie",
+      },
+    ],
+
     ratings: {
       type: Map,
       of: Number,

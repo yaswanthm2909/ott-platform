@@ -2,9 +2,12 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://ott-platform-vfba.onrender.com/api",
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-// attach token automatically
+// ✅ Attach token automatically
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -16,6 +19,24 @@ api.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
+);
+
+// ✅ Optional but IMPORTANT: handle 401 globally
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response && error.response.status === 401) {
+      console.log("Unauthorized - logging out");
+
+      // remove bad token
+      localStorage.removeItem("token");
+
+      // redirect to login (prevents broken state)
+      window.location.href = "/login";
+    }
+
+    return Promise.reject(error);
+  }
 );
 
 export default api;
