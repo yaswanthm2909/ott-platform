@@ -1,4 +1,4 @@
-/* Global dark theme */
+
 
 * {
   box-sizing: border-box;
@@ -11,12 +11,12 @@ body {
   color: #fff;
 }
 
-/* Links */
+
 a {
   color: inherit;
 }
 
-/* Buttons */
+
 button {
   background: #e50914;
   color: #fff;

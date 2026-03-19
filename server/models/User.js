@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema(
       },
     ],
 
-    // ✅ ADD THIS (you were missing it)
+    
     recentlyViewed: [
       {
         type: mongoose.Schema.Types.ObjectId,
@@ -56,7 +56,7 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// 🔐 HASH PASSWORD BEFORE SAVING
+
 userSchema.pre("save", async function () {
   if (!this.isModified("password")) return;
 

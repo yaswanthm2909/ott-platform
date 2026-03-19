@@ -2,7 +2,7 @@ import api from "./axios";
 
 export const getWatchlist = async () => {
   const res = await api.get("/watchlist");
-  return res.data; // ✅ THIS IS THE KEY
+  return res.data;
 };
 
 export const addToWatchlist = async (movieId) => {

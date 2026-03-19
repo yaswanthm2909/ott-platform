@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Movie = require("../models/Movie");
 
-// GET /api/movies - get all movies
+
 router.get("/", async (req, res) => {
   try {
     const movies = await Movie.find();
@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET /api/movies/:id - get single movie by id
+
 router.get("/:id", async (req, res) => {
   try {
     const movie = await Movie.findById(req.params.id);
@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// POST /api/movies - add a movie (for testing)
+
 router.post("/", async (req, res) => {
   try {
     const { title, description, poster } = req.body;

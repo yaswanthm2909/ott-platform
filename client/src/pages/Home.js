@@ -28,7 +28,7 @@ const Home = () => {
 
         setMovies(movieList);
 
-        // Random hero movie
+        
         if (movieList.length > 0) {
           const random =
             movieList[Math.floor(Math.random() * movieList.length)];

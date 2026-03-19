@@ -19,10 +19,10 @@ function Register() {
         password: password.trim(),
       });
 
-      // save token
+      
       localStorage.setItem("token", res.data.token);
 
-      // redirect to home
+      
       navigate("/");
     } catch (error) {
       console.error("Register error:", error);

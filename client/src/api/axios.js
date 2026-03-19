@@ -7,7 +7,7 @@ const api = axios.create({
   },
 });
 
-// ✅ Attach token automatically
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
@@ -21,17 +21,17 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// ✅ Optional but IMPORTANT: handle 401 globally
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
       console.log("Unauthorized - logging out");
 
-      // remove bad token
+   
       localStorage.removeItem("token");
 
-      // redirect to login (prevents broken state)
+      
       window.location.href = "/login";
     }
 

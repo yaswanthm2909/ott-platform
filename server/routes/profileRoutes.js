@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { protect } = require("../middleware/authMiddleware");
 
-// Return logged-in user's profile
+
 router.get("/profile", protect, (req, res) => {
   res.json({
     _id: req.user._id,

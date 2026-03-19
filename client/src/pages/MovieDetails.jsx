@@ -31,7 +31,7 @@ function MovieDetails() {
         const data = res.movie || res;
         setMovie(data);
 
-        // Watchlist
+       
         try {
           const wl = await getWatchlist();
           const exists = wl.find((m) => m._id === data._id);
@@ -40,7 +40,7 @@ function MovieDetails() {
           console.warn("Watchlist load failed");
         }
 
-        // Progress
+        
         try {
           const progressList = await getProgressList();
           const found = progressList.find(
@@ -51,7 +51,7 @@ function MovieDetails() {
           console.warn("Progress load failed");
         }
 
-        // Ratings
+        
         try {
           const ratings = await getRatings();
           setRating(ratings[data._id] || 0);

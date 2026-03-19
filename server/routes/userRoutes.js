@@ -3,9 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 const { protect } = require("../middleware/authMiddleware");
 
-// ================= PROFILE =================
 
-// GET user profile
 router.get("/profile", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id)
@@ -26,9 +24,7 @@ router.get("/profile", protect, async (req, res) => {
   }
 });
 
-// ================= WATCHLIST =================
 
-// GET watchlist
 router.get("/watchlist", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate("watchlist");
@@ -39,7 +35,7 @@ router.get("/watchlist", protect, async (req, res) => {
   }
 });
 
-// ADD to watchlist
+
 router.post("/watchlist/:movieId", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -57,7 +53,7 @@ router.post("/watchlist/:movieId", protect, async (req, res) => {
   }
 });
 
-// REMOVE from watchlist
+
 router.delete("/watchlist/:movieId", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -76,9 +72,7 @@ router.delete("/watchlist/:movieId", protect, async (req, res) => {
   }
 });
 
-// ================= CONTINUE WATCHING =================
 
-// GET progress list
 router.get("/progress", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).populate("continueWatching.movie");
@@ -89,7 +83,7 @@ router.get("/progress", protect, async (req, res) => {
   }
 });
 
-// UPDATE progress
+
 router.post("/progress", protect, async (req, res) => {
   try {
     const { movieId, progress } = req.body;
@@ -115,9 +109,7 @@ router.post("/progress", protect, async (req, res) => {
   }
 });
 
-// ================= RATINGS =================
 
-// GET ratings
 router.get("/ratings", protect, async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
@@ -128,7 +120,7 @@ router.get("/ratings", protect, async (req, res) => {
   }
 });
 
-// SET rating
+
 router.post("/ratings", protect, async (req, res) => {
   try {
     const { movieId, rating } = req.body;

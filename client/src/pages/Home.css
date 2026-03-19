@@ -7,7 +7,7 @@
   font-size: 22px;
 }
 
-/* HERO BANNER */
+
 
 .hero-banner {
   height: 420px;
@@ -49,7 +49,7 @@
   border-radius: 6px;
 }
 
-/* Search bar */
+
 
 .search-bar {
   display: flex;
@@ -78,7 +78,7 @@
   border: 1px solid #444;
 }
 
-/* Suggestions dropdown */
+
 
 .suggestions {
   position: absolute;
@@ -104,7 +104,7 @@
   background: #222;
 }
 
-/* Netflix style movie rows */
+
 
 .movie-row {
   display: flex;
@@ -122,7 +122,7 @@
   border-radius: 10px;
 }
 
-/* Progress bar */
+
 
 .progress-bar {
   width: 100%;
@@ -137,7 +137,7 @@
   border-radius: 4px;
 }
 
-/* Skeleton loader */
+
 
 .skeleton-card {
   width: 200px;
