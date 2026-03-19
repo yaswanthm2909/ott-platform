@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://ott-platform-vfba.onrender.com/api",
+  baseURL: "https://ott-platform-server-mwyo.onrender.com/api",
   headers: {
     "Content-Type": "application/json",
   },
